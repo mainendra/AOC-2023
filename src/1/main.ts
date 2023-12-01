@@ -16,7 +16,7 @@ const digitMap: Record<string, number> = {
 const getNumber = (numStr: string) => digitMap[numStr.toLocaleLowerCase()] || numStr;
 
 input.split('\n').forEach(line => {
-    const regEx = /(?=(one|two|three|four|five|six|seven|eight|nine|\d))/gi;
+    const regEx = new RegExp('(?=(' + Object.keys(digitMap).join('|') + '|\\d))', 'gi');
     const match = [...(line + line).matchAll(regEx)];
     if (match && match.length) {
         total += +(`${getNumber(match[0][1])}${getNumber(match[match.length - 1][1])}`);
