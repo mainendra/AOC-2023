@@ -11,6 +11,9 @@ const digitMap: Record<string, number> = {
     'seven': 7,
     'eight': 8,
     'nine': 9,
+};
+
+const digitMapReverse: Record<string, number> = {
     'eno': 1,
     'owt': 2,
     'eerht': 3,
@@ -22,12 +25,13 @@ const digitMap: Record<string, number> = {
     'enin': 9,
 };
 
-const regEx = /(one|two|three|four|five|six|seven|eight|nine|enin|thgie|neves|xis|evif|ruof|eerht|owt|eno|\d)/i;
-const getNumber = (numStr: string) => digitMap[numStr.toLocaleLowerCase()] || numStr;
+const regEx = /(one|two|three|four|five|six|seven|eight|nine|\d)/i;
+const regExReverse = /(enin|thgie|neves|xis|evif|ruof|eerht|owt|eno|\d)/i;
+const getNumber = (numStr: string) => digitMap[numStr.toLocaleLowerCase()] || digitMapReverse[numStr.toLocaleLowerCase()] || numStr;
 
 input.split('\n').forEach(line => {
     const match1 = line.match(regEx);
-    const match2 = line.split('').reverse().join('').match(regEx);
+    const match2 = line.split('').reverse().join('').match(regExReverse);
     if (match1 && match2) {
         const num = +(`${getNumber(match1[0])}${getNumber(match2[0])}`);
         total += num;
