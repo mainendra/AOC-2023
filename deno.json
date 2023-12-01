@@ -1,0 +1,5 @@
+{
+  "tasks": {
+    "help": "echo run main.ts from src folder"
+  }
+}
