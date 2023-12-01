@@ -17,7 +17,7 @@ const getNumber = (numStr: string) => digitMap[numStr.toLocaleLowerCase()] || nu
 
 input.split('\n').forEach(line => {
     const regEx = new RegExp('(?=(' + Object.keys(digitMap).join('|') + '|\\d))', 'gi');
-    const match = [...(line + line).matchAll(regEx)];
+    const match = [...line.matchAll(regEx)];
     if (match && match.length) {
         total += +(`${getNumber(match[0][1])}${getNumber(match[match.length - 1][1])}`);
     }
