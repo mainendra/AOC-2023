@@ -15,14 +15,14 @@ input.split('\n').forEach(line => {
 
     const id = +gameIdStr.substring(5); // Always starts with `Game `
 
-    const isInValid = games.split(';').some(game => {
-        return game.split(',').some(cube => {
+    const isValid = games.split(';').every(game => {
+        return game.split(',').every(cube => {
             const [countStr, colorStr] = cube.trim().split(' ');
-            return (cubes[colorStr.toLocaleLowerCase()] < +countStr);
+            return (cubes[colorStr.toLocaleLowerCase()] >= +countStr);
         });
     });
 
-    if (!isInValid) {
+    if (isValid) {
         sumOfIds += id;
     }
 });
