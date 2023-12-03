@@ -25,22 +25,22 @@ for (let rn = 0; rn < charGrid.length; rn++) {
         if (symbolRegEx.test(c)) {
             const numbersInnerSet = new Set();
             let gearRatio = 1;
-            [rn - 1, rn, rn + 1].forEach(rn1 => {
-                [cn - 1, cn, cn + 1].forEach(cn1 => {
-                    if (isValidPos(rn1, cn1) && isDigit(charGrid[rn1][cn1])) {
+            [rn - 1, rn, rn + 1].forEach(digitRn => {
+                [cn - 1, cn, cn + 1].forEach(digitCn => {
+                    if (isValidPos(digitRn, digitCn) && isDigit(charGrid[digitRn][digitCn])) {
                         let digitStr = '';
-                        let digitCnL = cn1;
-                        while (digitCnL >= 0 && isDigit(charGrid[rn1][digitCnL])) {
-                            digitStr = charGrid[rn1][digitCnL] + digitStr;
+                        let digitCnL = digitCn;
+                        while (digitCnL >= 0 && isDigit(charGrid[digitRn][digitCnL])) {
+                            digitStr = charGrid[digitRn][digitCnL] + digitStr;
                             digitCnL--;
                         }
-                        let digitCnR = cn1 + 1;
-                        while (digitCnR < charGrid[rn1].length && isDigit(charGrid[rn1][digitCnR])) {
-                            digitStr += charGrid[rn1][digitCnR];
+                        let digitCnR = digitCn + 1;
+                        while (digitCnR < charGrid[digitRn].length && isDigit(charGrid[digitRn][digitCnR])) {
+                            digitStr += charGrid[digitRn][digitCnR];
                             digitCnR++;
                         }
 
-                        const index = `${rn1},${digitCnL + 1},${digitStr}`;
+                        const index = `${digitRn},${digitCnL + 1},${digitStr}`;
 
                         if (!numbersSet.has(index)) {
                             numbersSet.add(index);
@@ -62,5 +62,5 @@ for (let rn = 0; rn < charGrid.length; rn++) {
     }
 }
 
-console.log(totalGearRatio);
-console.log(total);
+console.log(`Part 1: Total: ${total}`);
+console.log(`Part 2: Total gear ratio: ${totalGearRatio}`);
