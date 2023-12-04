@@ -1,5 +1,6 @@
 {
   "tasks": {
-    "help": "echo run main.ts from src folder"
+    "help": "echo run main.ts from src folder",
+    "input": "deno run --allow-read --allow-write --allow-net input.ts"
   }
 }
