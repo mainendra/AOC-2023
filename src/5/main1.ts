@@ -39,8 +39,6 @@ const findMapping = (num: number, values: Array<Array<number>>) => {
     return mapping ? mapping[1] + (num - mapping[0]) : num;
 };
 
-console.log(maps);
-
 const locations = seeds.map(seed => {
     return maps.reduce((nextVal, map) => {
         return findMapping(nextVal, map);
@@ -51,5 +49,4 @@ const minLocation = locations.reduce((r, v) => {
     return Math.min(r, v);
 }, locations[0]);
 
-console.log(locations);
 console.log(minLocation);
